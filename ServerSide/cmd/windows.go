@@ -15,7 +15,7 @@ func RunWindowsServer(Router *gin.Engine) {
 		ReadTimeout:    10 * time.Second,
 		WriteTimeout:   10 * time.Second,
 		MaxHeaderBytes: 1 << 20,
-	}
+}
 	time.Sleep(10 * time.Microsecond)
 	fmt.Printf(`欢迎使用 Gin-Vue-Admin
 	作者：奇淼 And Spike666

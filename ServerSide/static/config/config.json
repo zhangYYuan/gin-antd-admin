@@ -6,10 +6,10 @@
         "signingKey": "qmPlus"
     },
     "mysqladmin": {
-        "username": "root",
-        "password": "Aa@6447985",
-        "path": "127.0.0.1:3306",
-        "dbname": "qmPlus",
+        "username": "dancelake",
+        "password": "danceLaker2018qq.com",
+        "path": "gitlab.dancelake.cn:6650",
+        "dbname": "dancelake_admin_db",
         "config": "charset=utf8\u0026parseTime=True\u0026loc=Local"
     },
     "qiniu": {
@@ -17,9 +17,9 @@
         "secretKey": "pgdbqEsf7ooZh7W3xokP833h3dZ_VecFXPDeG5JY"
     },
     "redisadmin": {
-        "addr": "127.0.0.1:6379",
-        "password": "",
-        "db": 0
+        "addr": "gitlab.dancelake.cn:33530",
+        "password": "2018@qq.com",
+        "db": 6
     },
     "system": {
         "useMultipoint": false,

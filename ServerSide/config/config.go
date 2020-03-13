@@ -3,7 +3,7 @@ package config
 import (
 	"fmt"
 	"github.com/fsnotify/fsnotify"
-	"github.com/spf13/viper"
+	"github.com/spf13/viper" //使用fsnotify和viper实现json格式配置文件
 )
 
 type Config struct {

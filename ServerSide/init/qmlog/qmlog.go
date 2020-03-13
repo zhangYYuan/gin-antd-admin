@@ -40,4 +40,6 @@ func InitLog() *logrus.Logger {
 	lfHook := lfshook.NewHook(writeMap, &logrus.JSONFormatter{})
 	QMLog.AddHook(lfHook)
 	return QMLog
+	//使用：
+	//log := qmlog.QMLog
 }
