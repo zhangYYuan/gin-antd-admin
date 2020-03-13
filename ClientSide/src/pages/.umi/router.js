@@ -1,251 +1,265 @@
-import React from 'react';
+import React from "react";
 import {
   Router as DefaultRouter,
   Route,
   Switch,
-  StaticRouter,
-} from 'react-router-dom';
-import dynamic from 'umi/dynamic';
-import renderRoutes from 'umi/lib/renderRoutes';
-import history from '@@/history';
-import RendererWrapper0 from '/Users/zjx/WebstormProjects/2020/dance-admin/src/pages/.umi/LocaleWrapper.jsx';
-import { routerRedux, dynamic as _dvaDynamic } from 'dva';
+  StaticRouter
+} from "react-router-dom";
+import dynamic from "umi/dynamic";
+import renderRoutes from "umi/lib/renderRoutes";
+import history from "@@/history";
+import RendererWrapper0 from "/Volumes/Java/Cloud/Golang/git_resources/gin-vue-admin/ClientSide/src/pages/.umi/LocaleWrapper.jsx";
+import { routerRedux, dynamic as _dvaDynamic } from "dva";
 
 const Router = routerRedux.ConnectedRouter;
 
 const routes = [
   {
-    path: '/user',
+    path: "/user",
     component: __IS_BROWSER
       ? _dvaDynamic({
           component: () =>
-            import(/* webpackChunkName: "layouts__UserLayout" */ '../../layouts/UserLayout'),
-          LoadingComponent: require('/Users/zjx/WebstormProjects/2020/dance-admin/src/components/PageLoading/index')
-            .default,
+            import(
+              /* webpackChunkName: "layouts__UserLayout" */ "../../layouts/UserLayout"
+            ),
+          LoadingComponent: require("/Volumes/Java/Cloud/Golang/git_resources/gin-vue-admin/ClientSide/src/components/PageLoading/index")
+            .default
         })
-      : require('../../layouts/UserLayout').default,
+      : require("../../layouts/UserLayout").default,
     routes: [
       {
-        name: 'login',
-        path: '/user/login',
+        name: "login",
+        path: "/user/login",
         component: __IS_BROWSER
           ? _dvaDynamic({
-              app: require('@tmp/dva').getApp(),
+              app: require("@tmp/dva").getApp(),
               models: () => [
-                import(/* webpackChunkName: 'p__user__login__model.js' */ '/Users/zjx/WebstormProjects/2020/dance-admin/src/pages/user/login/model.js').then(
-                  m => {
-                    return { namespace: 'model', ...m.default };
-                  },
-                ),
+                import(
+                  /* webpackChunkName: 'p__user__login__model.js' */ "/Volumes/Java/Cloud/Golang/git_resources/gin-vue-admin/ClientSide/src/pages/user/login/model.js"
+                ).then(m => {
+                  return { namespace: "model", ...m.default };
+                })
               ],
               component: () =>
-                import(/* webpackChunkName: "p__user__login" */ '../user/login'),
-              LoadingComponent: require('/Users/zjx/WebstormProjects/2020/dance-admin/src/components/PageLoading/index')
-                .default,
+                import(
+                  /* webpackChunkName: "p__user__login" */ "../user/login"
+                ),
+              LoadingComponent: require("/Volumes/Java/Cloud/Golang/git_resources/gin-vue-admin/ClientSide/src/components/PageLoading/index")
+                .default
             })
-          : require('../user/login').default,
-        exact: true,
+          : require("../user/login").default,
+        exact: true
       },
       {
         component: () =>
           React.createElement(
-            require('/Users/zjx/WebstormProjects/2020/dance-admin/node_modules/umi-build-dev/lib/plugins/404/NotFound.js')
+            require("/Volumes/Java/Cloud/Golang/git_resources/gin-vue-admin/ClientSide/node_modules/umi-build-dev/lib/plugins/404/NotFound.js")
               .default,
-            { pagesPath: 'src/pages', hasRoutesInConfig: true },
-          ),
-      },
-    ],
+            { pagesPath: "src/pages", hasRoutesInConfig: true }
+          )
+      }
+    ]
   },
   {
-    path: '/',
+    path: "/",
     component: __IS_BROWSER
       ? _dvaDynamic({
           component: () =>
-            import(/* webpackChunkName: "layouts__SecurityLayout" */ '../../layouts/SecurityLayout'),
-          LoadingComponent: require('/Users/zjx/WebstormProjects/2020/dance-admin/src/components/PageLoading/index')
-            .default,
+            import(
+              /* webpackChunkName: "layouts__SecurityLayout" */ "../../layouts/SecurityLayout"
+            ),
+          LoadingComponent: require("/Volumes/Java/Cloud/Golang/git_resources/gin-vue-admin/ClientSide/src/components/PageLoading/index")
+            .default
         })
-      : require('../../layouts/SecurityLayout').default,
+      : require("../../layouts/SecurityLayout").default,
     routes: [
       {
-        path: '/',
+        path: "/",
         component: __IS_BROWSER
           ? _dvaDynamic({
               component: () =>
-                import(/* webpackChunkName: "layouts__BasicLayout" */ '../../layouts/BasicLayout'),
-              LoadingComponent: require('/Users/zjx/WebstormProjects/2020/dance-admin/src/components/PageLoading/index')
-                .default,
+                import(
+                  /* webpackChunkName: "layouts__BasicLayout" */ "../../layouts/BasicLayout"
+                ),
+              LoadingComponent: require("/Volumes/Java/Cloud/Golang/git_resources/gin-vue-admin/ClientSide/src/components/PageLoading/index")
+                .default
             })
-          : require('../../layouts/BasicLayout').default,
-        authority: ['admin', 'user'],
+          : require("../../layouts/BasicLayout").default,
+        authority: ["admin", "user"],
         routes: [
           {
-            path: '/',
-            redirect: '/welcome/index',
-            exact: true,
+            path: "/",
+            redirect: "/welcome/index",
+            exact: true
           },
           {
-            path: '/welcome',
-            name: 'welcome',
-            icon: 'crown',
+            path: "/welcome",
+            name: "welcome",
+            icon: "crown",
             routes: [
               {
-                path: '/welcome/index',
-                name: 'index',
+                path: "/welcome/index",
+                name: "index",
                 component: __IS_BROWSER
                   ? _dvaDynamic({
-                      app: require('@tmp/dva').getApp(),
+                      app: require("@tmp/dva").getApp(),
                       models: () => [
-                        import(/* webpackChunkName: 'p__welcome__model.js' */ '/Users/zjx/WebstormProjects/2020/dance-admin/src/pages/welcome/model.js').then(
-                          m => {
-                            return { namespace: 'model', ...m.default };
-                          },
-                        ),
+                        import(
+                          /* webpackChunkName: 'p__welcome__model.js' */ "/Volumes/Java/Cloud/Golang/git_resources/gin-vue-admin/ClientSide/src/pages/welcome/model.js"
+                        ).then(m => {
+                          return { namespace: "model", ...m.default };
+                        })
                       ],
                       component: () =>
-                        import(/* webpackChunkName: "layouts__BasicLayout" */ '../welcome/Welcome'),
-                      LoadingComponent: require('/Users/zjx/WebstormProjects/2020/dance-admin/src/components/PageLoading/index')
-                        .default,
+                        import(
+                          /* webpackChunkName: "layouts__BasicLayout" */ "../welcome/Welcome"
+                        ),
+                      LoadingComponent: require("/Volumes/Java/Cloud/Golang/git_resources/gin-vue-admin/ClientSide/src/components/PageLoading/index")
+                        .default
                     })
-                  : require('../welcome/Welcome').default,
-                authority: ['admin'],
-                exact: true,
+                  : require("../welcome/Welcome").default,
+                authority: ["admin"],
+                exact: true
               },
               {
                 component: () =>
                   React.createElement(
-                    require('/Users/zjx/WebstormProjects/2020/dance-admin/node_modules/umi-build-dev/lib/plugins/404/NotFound.js')
+                    require("/Volumes/Java/Cloud/Golang/git_resources/gin-vue-admin/ClientSide/node_modules/umi-build-dev/lib/plugins/404/NotFound.js")
                       .default,
-                    { pagesPath: 'src/pages', hasRoutesInConfig: true },
-                  ),
-              },
-            ],
+                    { pagesPath: "src/pages", hasRoutesInConfig: true }
+                  )
+              }
+            ]
           },
           {
-            path: '/admin',
-            name: 'admin',
-            icon: 'crown',
+            path: "/admin",
+            name: "admin",
+            icon: "crown",
             component: __IS_BROWSER
               ? _dvaDynamic({
                   component: () =>
-                    import(/* webpackChunkName: "p__Admin" */ '../Admin'),
-                  LoadingComponent: require('/Users/zjx/WebstormProjects/2020/dance-admin/src/components/PageLoading/index')
-                    .default,
+                    import(/* webpackChunkName: "p__Admin" */ "../Admin"),
+                  LoadingComponent: require("/Volumes/Java/Cloud/Golang/git_resources/gin-vue-admin/ClientSide/src/components/PageLoading/index")
+                    .default
                 })
-              : require('../Admin').default,
-            authority: ['admin'],
+              : require("../Admin").default,
+            authority: ["admin"],
             routes: [
               {
-                path: '/admin/sub-page',
-                name: 'sub-page',
-                icon: 'smile',
+                path: "/admin/sub-page",
+                name: "sub-page",
+                icon: "smile",
                 component: __IS_BROWSER
                   ? _dvaDynamic({
-                      app: require('@tmp/dva').getApp(),
+                      app: require("@tmp/dva").getApp(),
                       models: () => [
-                        import(/* webpackChunkName: 'p__welcome__model.js' */ '/Users/zjx/WebstormProjects/2020/dance-admin/src/pages/welcome/model.js').then(
-                          m => {
-                            return { namespace: 'model', ...m.default };
-                          },
-                        ),
+                        import(
+                          /* webpackChunkName: 'p__welcome__model.js' */ "/Volumes/Java/Cloud/Golang/git_resources/gin-vue-admin/ClientSide/src/pages/welcome/model.js"
+                        ).then(m => {
+                          return { namespace: "model", ...m.default };
+                        })
                       ],
                       component: () =>
-                        import(/* webpackChunkName: "p__Admin" */ '../welcome/Welcome'),
-                      LoadingComponent: require('/Users/zjx/WebstormProjects/2020/dance-admin/src/components/PageLoading/index')
-                        .default,
+                        import(
+                          /* webpackChunkName: "p__Admin" */ "../welcome/Welcome"
+                        ),
+                      LoadingComponent: require("/Volumes/Java/Cloud/Golang/git_resources/gin-vue-admin/ClientSide/src/components/PageLoading/index")
+                        .default
                     })
-                  : require('../welcome/Welcome').default,
-                authority: ['admin'],
-                exact: true,
+                  : require("../welcome/Welcome").default,
+                authority: ["admin"],
+                exact: true
               },
               {
                 component: () =>
                   React.createElement(
-                    require('/Users/zjx/WebstormProjects/2020/dance-admin/node_modules/umi-build-dev/lib/plugins/404/NotFound.js')
+                    require("/Volumes/Java/Cloud/Golang/git_resources/gin-vue-admin/ClientSide/node_modules/umi-build-dev/lib/plugins/404/NotFound.js")
                       .default,
-                    { pagesPath: 'src/pages', hasRoutesInConfig: true },
-                  ),
-              },
-            ],
+                    { pagesPath: "src/pages", hasRoutesInConfig: true }
+                  )
+              }
+            ]
           },
           {
-            name: 'list.table-list',
-            icon: 'table',
-            path: '/list',
+            name: "list.table-list",
+            icon: "table",
+            path: "/list",
             component: __IS_BROWSER
               ? _dvaDynamic({
                   component: () =>
-                    import(/* webpackChunkName: "p__ListTableList" */ '../ListTableList'),
-                  LoadingComponent: require('/Users/zjx/WebstormProjects/2020/dance-admin/src/components/PageLoading/index')
-                    .default,
+                    import(
+                      /* webpackChunkName: "p__ListTableList" */ "../ListTableList"
+                    ),
+                  LoadingComponent: require("/Volumes/Java/Cloud/Golang/git_resources/gin-vue-admin/ClientSide/src/components/PageLoading/index")
+                    .default
                 })
-              : require('../ListTableList').default,
-            exact: true,
+              : require("../ListTableList").default,
+            exact: true
           },
           {
             component: __IS_BROWSER
               ? _dvaDynamic({
                   component: () =>
-                    import(/* webpackChunkName: "p__404" */ '../404'),
-                  LoadingComponent: require('/Users/zjx/WebstormProjects/2020/dance-admin/src/components/PageLoading/index')
-                    .default,
+                    import(/* webpackChunkName: "p__404" */ "../404"),
+                  LoadingComponent: require("/Volumes/Java/Cloud/Golang/git_resources/gin-vue-admin/ClientSide/src/components/PageLoading/index")
+                    .default
                 })
-              : require('../404').default,
-            exact: true,
+              : require("../404").default,
+            exact: true
           },
           {
             component: () =>
               React.createElement(
-                require('/Users/zjx/WebstormProjects/2020/dance-admin/node_modules/umi-build-dev/lib/plugins/404/NotFound.js')
+                require("/Volumes/Java/Cloud/Golang/git_resources/gin-vue-admin/ClientSide/node_modules/umi-build-dev/lib/plugins/404/NotFound.js")
                   .default,
-                { pagesPath: 'src/pages', hasRoutesInConfig: true },
-              ),
-          },
-        ],
+                { pagesPath: "src/pages", hasRoutesInConfig: true }
+              )
+          }
+        ]
       },
       {
         component: __IS_BROWSER
           ? _dvaDynamic({
               component: () =>
-                import(/* webpackChunkName: "p__404" */ '../404'),
-              LoadingComponent: require('/Users/zjx/WebstormProjects/2020/dance-admin/src/components/PageLoading/index')
-                .default,
+                import(/* webpackChunkName: "p__404" */ "../404"),
+              LoadingComponent: require("/Volumes/Java/Cloud/Golang/git_resources/gin-vue-admin/ClientSide/src/components/PageLoading/index")
+                .default
             })
-          : require('../404').default,
-        exact: true,
+          : require("../404").default,
+        exact: true
       },
       {
         component: () =>
           React.createElement(
-            require('/Users/zjx/WebstormProjects/2020/dance-admin/node_modules/umi-build-dev/lib/plugins/404/NotFound.js')
+            require("/Volumes/Java/Cloud/Golang/git_resources/gin-vue-admin/ClientSide/node_modules/umi-build-dev/lib/plugins/404/NotFound.js")
               .default,
-            { pagesPath: 'src/pages', hasRoutesInConfig: true },
-          ),
-      },
-    ],
+            { pagesPath: "src/pages", hasRoutesInConfig: true }
+          )
+      }
+    ]
   },
   {
     component: __IS_BROWSER
       ? _dvaDynamic({
-          component: () => import(/* webpackChunkName: "p__404" */ '../404'),
-          LoadingComponent: require('/Users/zjx/WebstormProjects/2020/dance-admin/src/components/PageLoading/index')
-            .default,
+          component: () => import(/* webpackChunkName: "p__404" */ "../404"),
+          LoadingComponent: require("/Volumes/Java/Cloud/Golang/git_resources/gin-vue-admin/ClientSide/src/components/PageLoading/index")
+            .default
         })
-      : require('../404').default,
-    exact: true,
+      : require("../404").default,
+    exact: true
   },
   {
     component: () =>
       React.createElement(
-        require('/Users/zjx/WebstormProjects/2020/dance-admin/node_modules/umi-build-dev/lib/plugins/404/NotFound.js')
+        require("/Volumes/Java/Cloud/Golang/git_resources/gin-vue-admin/ClientSide/node_modules/umi-build-dev/lib/plugins/404/NotFound.js")
           .default,
-        { pagesPath: 'src/pages', hasRoutesInConfig: true },
-      ),
-  },
+        { pagesPath: "src/pages", hasRoutesInConfig: true }
+      )
+  }
 ];
 window.g_routes = routes;
-const plugins = require('umi/_runtimePlugin');
-plugins.applyForEach('patchRoutes', { initialValue: routes });
+const plugins = require("umi/_runtimePlugin");
+plugins.applyForEach("patchRoutes", { initialValue: routes });
 
 export { routes };
 
@@ -257,12 +271,12 @@ export default class RouterWrapper extends React.Component {
 
     // route change handler
     function routeChangeHandler(location, action) {
-      plugins.applyForEach('onRouteChange', {
+      plugins.applyForEach("onRouteChange", {
         initialValue: {
           routes,
           location,
-          action,
-        },
+          action
+        }
       });
     }
     this.unListen = history.listen(routeChangeHandler);
@@ -271,7 +285,7 @@ export default class RouterWrapper extends React.Component {
     const isDva =
       history.listen
         .toString()
-        .indexOf('callback(history.location, history.action)') > -1;
+        .indexOf("callback(history.location, history.action)") > -1;
     if (!isDva) {
       routeChangeHandler(history.location);
     }

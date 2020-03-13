@@ -1,29 +1,45 @@
-import dva from 'dva';
-import { Component } from 'react';
-import createLoading from 'dva-loading';
-import history from '@tmp/history';
+import dva from "dva";
+import { Component } from "react";
+import createLoading from "dva-loading";
+import history from "@tmp/history";
 
 let app = null;
 
 export function _onCreate() {
-  const plugins = require('umi/_runtimePlugin');
-  const runtimeDva = plugins.mergeConfig('dva');
+  const plugins = require("umi/_runtimePlugin");
+  const runtimeDva = plugins.mergeConfig("dva");
   app = dva({
     history,
-    
+
     ...(runtimeDva.config || {}),
-    ...(window.g_useSSR ? { initialState: window.g_initialData } : {}),
+    ...(window.g_useSSR ? { initialState: window.g_initialData } : {})
   });
-  
+
   app.use(createLoading());
   (runtimeDva.plugins || []).forEach(plugin => {
     app.use(plugin);
   });
-  
-  app.model({ namespace: 'global', ...(require('/Users/zjx/WebstormProjects/2020/dance-admin/src/models/global.js').default) });
-app.model({ namespace: 'login', ...(require('/Users/zjx/WebstormProjects/2020/dance-admin/src/models/login.js').default) });
-app.model({ namespace: 'setting', ...(require('/Users/zjx/WebstormProjects/2020/dance-admin/src/models/setting.js').default) });
-app.model({ namespace: 'user', ...(require('/Users/zjx/WebstormProjects/2020/dance-admin/src/models/user.js').default) });
+
+  app.model({
+    namespace: "global",
+    ...require("/Volumes/Java/Cloud/Golang/git_resources/gin-vue-admin/ClientSide/src/models/global.js")
+      .default
+  });
+  app.model({
+    namespace: "login",
+    ...require("/Volumes/Java/Cloud/Golang/git_resources/gin-vue-admin/ClientSide/src/models/login.js")
+      .default
+  });
+  app.model({
+    namespace: "setting",
+    ...require("/Volumes/Java/Cloud/Golang/git_resources/gin-vue-admin/ClientSide/src/models/setting.js")
+      .default
+  });
+  app.model({
+    namespace: "user",
+    ...require("/Volumes/Java/Cloud/Golang/git_resources/gin-vue-admin/ClientSide/src/models/user.js")
+      .default
+  });
   return app;
 }
 
