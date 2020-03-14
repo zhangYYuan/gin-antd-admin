@@ -16,6 +16,7 @@ const UserModel = {
 
     *fetchCurrent(_, { put }) {
       const user = JSON.parse(localStorage.getItem('antd-pro-user'));
+      console.log('fetchCurrent----->');
       yield put({
         type: 'saveCurrentUser',
         payload: user,
@@ -24,6 +25,7 @@ const UserModel = {
   },
   reducers: {
     saveCurrentUser(state, action) {
+      console.log('saveCurrentUser----->');
       return { ...state, currentUser: action.payload || {} };
     },
 
