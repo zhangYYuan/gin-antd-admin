@@ -1,10 +1,11 @@
 import service from '@/utils/request'
 
 export const getList = (data) => {
+    console.log('getList--data: ' + JSON.stringify(data))
     return service({
         url: "/treattype/getpagelist",
-        method: 'get',
-        params: data
+        method: 'post',
+        data
     })
 }
 

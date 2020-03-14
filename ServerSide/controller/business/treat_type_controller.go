@@ -89,7 +89,7 @@ func GetPageList(c *gin.Context) {
 	}
 	var sp searchParams
 	_ = c.ShouldBindJSON(&sp)
-	fmt.Println("searchParams json: ", sp.PageInfo)
+	fmt.Println("TreatType searchParams json: ", sp.TreatType,sp.PageInfo)
 	err, list, total := sp.TreatType.GetInfoList(sp.PageInfo)
 	if err != nil {
 		servers.ReportFormat(c, false, fmt.Sprintf("获取数据失败，%v", err), gin.H{})
