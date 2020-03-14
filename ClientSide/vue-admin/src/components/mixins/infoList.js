@@ -18,6 +18,7 @@ export default {
             this.getTableData()
         },
         async getTableData(page = this.page, pageSize = this.pageSize) {
+            console.log('------->', this.page)
             const table = await this.listApi({ page, pageSize, ...this.searchInfo })
             this.tableData = table.data[this.listKey]
             this.total = table.data.total

@@ -4,7 +4,7 @@ export const getList = (data) => {
     return service({
         url: "/treattype/getpagelist",
         method: 'get',
-        data
+        params: data
     })
 }
 
