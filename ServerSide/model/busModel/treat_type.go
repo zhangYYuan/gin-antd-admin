@@ -27,7 +27,7 @@ EMBEDDED_PREFIX 设置嵌入结构的前缀
 type TreatType struct {
 	gorm.Model
 	BusModel
-	Name     string `json:"description" gorm:"unique;column:name;type:varchar(255);not null"`
+	Name     string `json:"name" gorm:"unique;column:name;type:varchar(255);not null"`
 	Describe string `json:"describe" gorm:"type:text;not null"`
 	Level int `json:"level" gorm:"type:tinyint;default 1;not null"`
 	Region int `json:"region" gorm:"type:tinyint;default 1;not null"`
