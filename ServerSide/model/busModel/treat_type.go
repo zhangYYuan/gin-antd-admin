@@ -1,6 +1,7 @@
 package busModel
 
 import (
+	"fmt"
 	"gin-vue-admin/controller/servers"
 	"gin-vue-admin/init/qmsql"
 	"gin-vue-admin/model/modelInterface"
@@ -77,15 +78,18 @@ func (tt *TreatType) GetAlls() (err error, treatTypes []TreatType) {
 func (tt *TreatType) GetInfoList(info modelInterface.PageInfo) (err error, list interface{}, total int) {
 	// 封装分页方法 调用即可 传入 当前的结构体和分页信息
 	err, db, total := servers.PagingServer(tt, info)
+	fmt.Println("GetInfoList total ------>> ",total)
 	if err != nil {
 		return
 	} else {
 		var resList []TreatType
-		err = qmsql.DEFAULTDB.Where("name LIKE ?", "%"+tt.Name+"%").Find(&resList).Count(&total).Error
+		//Where("name LIKE ?", "%"+tt.Name+"%").
+		err = qmsql.DEFAULTDB.Find(&resList).Count(&total).Error
 		if err!=nil{
 			return err, resList, total
 		}else{
-			err = db.Order("id", true).Where("name LIKE ?", "%"+tt.Name+"%").Find(&resList).Error
+			//Where("name LIKE ?", "%"+tt.Name+"%")
+			err = db.Order("id", true).Find(&resList).Error
 		}
 		return err, resList, total
 	}
