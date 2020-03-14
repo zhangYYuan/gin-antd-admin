@@ -16,7 +16,7 @@ func CasbinHandler() gin.HandlerFunc {
 		obj := c.Request.URL.RequestURI()
 		//获取请求方法
 		act := c.Request.Method
-		//获取用户的角色
+		//获取用户的某种角色
 		sub := waitUse.AuthorityId
 		e := sysModel.Casbin()
 		//判断策略中是否存在

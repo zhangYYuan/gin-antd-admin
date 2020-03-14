@@ -20,6 +20,7 @@ func InitRouter() *gin.Engine {
 	ApiGroup := Router.Group("") // 方便统一添加路由组前缀 多服务器上线使用
 	router.InitUserRouter(ApiGroup)                  // 注册用户路由
 	router.InitBaseRouter(ApiGroup)                  // 注册基础功能路由 不做鉴权
+
 	router.InitMenuRouter(ApiGroup)                  // 注册menu路由
 	router.InitAuthorityRouter(ApiGroup)             // 注册角色路由
 	router.InitApiRouter(ApiGroup)                   // 注册功能api路由

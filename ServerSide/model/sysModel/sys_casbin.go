@@ -98,6 +98,7 @@ func ParamsMatchFunc(args ...interface{}) (interface{}, error) {
 //持久化到数据库  引入自定义规则
 func Casbin() *casbin.Enforcer {
 	a := gormadapter.NewAdapterByDB(qmsql.DEFAULTDB)
+	//生成casbin的执行器
 	e := casbin.NewEnforcer(config.GinVueAdminconfig.CasbinConfig.ModelPath, a)
 	e.AddFunction("ParamsMatch", ParamsMatchFunc)
 	e.LoadPolicy()
