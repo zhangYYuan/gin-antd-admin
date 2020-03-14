@@ -17,14 +17,18 @@ const Model = {
         type: 'changeLoginStatus',
         payload: response,
       }); // Login successfully
+      const { token, user } = response.data;
+      localStorage.setItem('antd-pro-token', token);
+      localStorage.setItem('antd-pro-user', JSON.stringify(user));
 
       if (response.success === true) {
         const urlParams = new URL(window.location.href);
         const params = getPageQuery();
         let { redirect } = params;
+
         if (redirect) {
           const redirectUrlParams = new URL(redirect);
-
+          console.log('-------->', redirectUrlParams.origin, urlParams.origin);
           if (redirectUrlParams.origin === urlParams.origin) {
             redirect = redirect.substr(urlParams.origin.length);
             if (redirect.match(/^\/.*#/)) {
@@ -35,6 +39,7 @@ const Model = {
             return;
           }
         }
+
         router.replace(redirect || '/');
       }
     },
@@ -54,7 +59,7 @@ const Model = {
   },
   reducers: {
     changeLoginStatus(state, { payload }) {
-      setAuthority(payload.currentAuthority);
+      setAuthority('admin');
       return { ...state, status: payload.data, type: payload.type };
     },
     saveCurrentUser(state, action) {

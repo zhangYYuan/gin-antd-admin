@@ -1,4 +1,4 @@
-import { queryCurrent, query as queryUsers } from '@/services/user';
+import { query as queryUsers } from '@/services/user';
 
 const UserModel = {
   namespace: 'user',
@@ -14,11 +14,11 @@ const UserModel = {
       });
     },
 
-    *fetchCurrent(_, { call, put }) {
-      const response = yield call(queryCurrent);
+    *fetchCurrent(_, { put }) {
+      const user = JSON.parse(localStorage.getItem('antd-pro-user'));
       yield put({
         type: 'saveCurrentUser',
-        payload: response,
+        payload: user,
       });
     },
   },

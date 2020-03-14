@@ -45,13 +45,30 @@ const errorHandler = error => {
 
   return response;
 };
+
 /**
  * 配置request请求时的默认参数
  */
-
 const request = extend({
   errorHandler,
   // 默认错误处理
   credentials: 'include', // 默认请求是否带上cookie
 });
+
+request.interceptors.request.use((url, options) => {
+  const token = localStorage.getItem('antd-pro-token');
+  if (token) {
+    return {
+      url,
+      options: {
+        ...options,
+        headers: {
+          token,
+        },
+      },
+    };
+  }
+  return { url, ...options };
+});
+
 export default request;

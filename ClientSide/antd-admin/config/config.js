@@ -104,13 +104,19 @@ export default {
           routes: [
             {
               path: '/',
-              redirect: '/welcome',
+              redirect: '/welcome/treat',
             },
             {
               path: '/welcome',
               name: 'welcome',
               icon: 'smile',
-              component: './Welcome',
+              routes: [
+                {
+                  path: '/welcome/treat',
+                  name: 'treat',
+                  component: './Welcome',
+                },
+              ],
             },
             {
               path: '/admin',
