@@ -16,7 +16,7 @@ export function getAuthority(str) {
 
   if (typeof authority === 'string') {
     // return [authority];
-    return ['admin']
+    return ['admin'];
   } // preview.pro.ant.design only do not use in your production.
   // preview.pro.ant.design 专用环境变量，请不要在你的项目中使用它。
 
@@ -28,7 +28,6 @@ export function getAuthority(str) {
 }
 export function setAuthority(authority) {
   const proAuthority = typeof authority === 'string' ? [authority] : authority;
-  // localStorage.setItem('antd-pro-authority', JSON.stringify(proAuthority)); // auto reload
-  localStorage.setItem('antd-pro-authority', 'admin'); // auto reload
+  localStorage.setItem('antd-pro-authority', JSON.stringify(proAuthority)); // auto reload
   reloadAuthorized();
 }

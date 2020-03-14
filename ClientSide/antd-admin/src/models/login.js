@@ -35,7 +35,6 @@ const Model = {
             return;
           }
         }
-        console.log('------->>', redirect)
         router.replace(redirect || '/');
       }
     },
@@ -56,11 +55,9 @@ const Model = {
   reducers: {
     changeLoginStatus(state, { payload }) {
       setAuthority(payload.currentAuthority);
-      console.log('changeLoginStatus------>', payload.data)
       return { ...state, status: payload.data, type: payload.type };
     },
     saveCurrentUser(state, action) {
-      console.log(action.payload)
       return { ...state, currentUser: action.payload || {} };
     },
   },

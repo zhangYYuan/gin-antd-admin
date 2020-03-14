@@ -14,23 +14,22 @@ class SecurityLayout extends React.Component {
       isReady: true,
     });
     const { dispatch, logInfo } = this.props;
-    console.log('============>', logInfo)
     // 这里改成传登录时的用户信息
     if (dispatch) {
       dispatch({
         type: 'user/fetchCurrent',
-        payload: logInfo
+        payload: logInfo,
       });
     }
   }
 
   render() {
     const { isReady } = this.state;
-    const { children, loading, currentUser } = this.props; // You can replace it to your authentication rule (such as check token exists)
+    // const { children, loading, currentUser } = this.props; // You can replace it to your authentication rule (such as check token exists)
+    const { children, loading } = this.props; // You can replace it to your authentication rule (such as check token exists)
     // 你可以把它替换成你自己的登录认证规则（比如判断 token 是否存在）
 
-    const isLogin = true // currentUser && currentUser.userid;
-    console.log('render============>', currentUser, isLogin)
+    const isLogin = true; // currentUser && currentUser.userid;
 
     const queryString = stringify({
       redirect: window.location.href,
