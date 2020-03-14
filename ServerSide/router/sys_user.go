@@ -13,5 +13,6 @@ func InitUserRouter(Router *gin.RouterGroup) {
 		UserRouter.POST("uploadHeaderImg", api.UploadHeaderImg)   //上传头像
 		UserRouter.POST("getUserList", api.GetUserList)           // 分页获取用户列表
 		UserRouter.POST("setUserAuthority", api.SetUserAuthority) //设置用户权限
+		UserRouter.GET("currentUser", api.GetCurrentUser)
 	}
 }

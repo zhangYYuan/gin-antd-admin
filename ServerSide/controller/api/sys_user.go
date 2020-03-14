@@ -237,3 +237,10 @@ func SetUserAuthority(c *gin.Context) {
 		servers.ReportFormat(c, true, "修改成功", gin.H{})
 	}
 }
+
+func GetCurrentUser(c *gin.Context) {
+	servers.ReportFormat(c, true, "查询成功", gin.H{
+		"username": "admin",
+	})
+
+}
