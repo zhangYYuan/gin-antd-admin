@@ -23,6 +23,7 @@ type SysBaseMenu struct {
 	Children  []SysBaseMenu `json:"children"`
 }
 
+
 //增加基础路由
 func (b *SysBaseMenu) AddBaseMenu() (err error) {
 	findOne := qmsql.DEFAULTDB.Where("name = ?", b.Name).Find(&SysBaseMenu{}).Error
