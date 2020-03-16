@@ -39,8 +39,8 @@ const Model = {
             return;
           }
         }
-
-        router.replace(redirect || '/');
+        window.location.href = redirect || '/';
+        // router.replace(redirect || '/');
       }
     },
 
@@ -59,7 +59,7 @@ const Model = {
   },
   reducers: {
     changeLoginStatus(state, { payload }) {
-      setAuthority('admin');
+      setAuthority(payload.currentAuthority);
       return { ...state, status: payload.data, type: payload.type };
     },
     saveCurrentUser(state, action) {

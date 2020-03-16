@@ -197,3 +197,15 @@ func GetBaseMenuById(c *gin.Context) {
 		servers.ReportFormat(c, true, "查询成功", gin.H{"menu": menu})
 	}
 }
+
+func AddAntMenu(c *gin.Context)  {
+	var antdMenu sysModel.SysAntdMenu
+	_ = c.BindJSON(&antdMenu)
+	fmt.Println("AddAntMenu-->", antdMenu)
+	err := antdMenu.AddAntdMenu()
+	if err != nil {
+		servers.ReportFormat(c, false, fmt.Sprintf("添加失败，%v", err), gin.H{})
+	} else {
+		servers.ReportFormat(c, true, fmt.Sprintf("添加成功"), gin.H{})
+	}
+}
