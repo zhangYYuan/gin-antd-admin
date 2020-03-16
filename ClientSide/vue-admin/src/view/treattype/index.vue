@@ -16,9 +16,29 @@
     <el-table :data="tableData" border stripe>
       <el-table-column label="id" min-width="60" prop="ID"></el-table-column>
       <el-table-column label="名称" min-width="150" prop="name"></el-table-column>
-      <el-table-column label="等级" min-width="150" prop="level"></el-table-column>
+      <el-table-column class-name="status-col" label="状态" min-width="60" prop="status">
+        <template slot-scope="{row}">
+          <el-tag :type="row.status | statusFilter">
+            {{ row.status | statusNameFilter }}
+          </el-tag>
+        </template>
+      </el-table-column>
+
+      <el-table-column class-name="status-col" label="等级" min-width="60" prop="level">
+        <template slot-scope="{row}">
+          <el-tag :type="row.level | levelFilter">
+            {{ row.level | levelNameFilter }}
+          </el-tag>
+        </template>
+      </el-table-column>
       <el-table-column label="简介" min-width="150" prop="describe"></el-table-column>
-      <el-table-column label="区域" min-width="150" prop="region"></el-table-column>
+      <el-table-column class-name="status-col" label="区域" min-width="60" prop="region">
+        <template slot-scope="{row}">
+          <el-tag :type="row.region | regionFilter">
+            {{ row.region | regionNameFilter }}
+          </el-tag>
+        </template>
+      </el-table-column>
 
       <el-table-column fixed="right" label="操作" width="200">
         <template slot-scope="scope">
@@ -43,6 +63,18 @@
         <el-form-item label="名称">
           <el-input autocomplete="off" v-model="form.name"></el-input>
         </el-form-item>
+
+        <el-form-item label="状态">
+          <el-select placeholder="请选择" v-model="form.status">
+            <el-option
+                    :key="item.value"
+                    :label="`${item.label}(${item.value})`"
+                    :value="item.value"
+                    v-for="item in statusOptions"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+
         <el-form-item label="等级">
         <el-select placeholder="请选择" v-model="form.level">
           <el-option
@@ -89,8 +121,14 @@ import {
   getById,
   getList,
   createTreatType,
-  updataTreatType,
-  deleteTreatType
+  updateTreatType,
+  deleteTreatType,
+  statusFilter,
+  statusNameFilter,
+  levelFilter,
+  levelNameFilter,
+  regionFilter,
+  regionNameFilter
 } from '@/api/treattype'
 import infoList from '@/components/mixins/infoList'
 
@@ -102,6 +140,17 @@ const levelOptions = [
   {
     value: 3,
     label: '三阶'
+  }
+]
+
+const statusOptions = [
+  {
+    value: 0,
+    label: '已删除'
+  },
+  {
+    value: 1,
+    label: '正常'
   }
 ]
 
@@ -117,8 +166,16 @@ const regionOptions = [
 ]
 
 export default {
-  name: 'Api',
+  name: 'TreatType',
   mixins: [infoList],
+  filters: {
+    statusFilter,
+    statusNameFilter,
+    levelFilter,
+    levelNameFilter,
+    regionFilter,
+    regionNameFilter
+  },
   data() {
     return {
       listApi: getList,
@@ -128,8 +185,10 @@ export default {
         name: '',
         level: undefined,
         region: undefined,
+        status: undefined,
         describe: ''
       },
+      statusOptions: statusOptions,
       levelOptions: levelOptions,
       regionOptions: regionOptions,
       type: ''
@@ -147,6 +206,7 @@ export default {
         name: '',
         level: undefined,
         region: undefined,
+        status: undefined,
         describe: ''
       }
     },
@@ -201,11 +261,11 @@ export default {
             this.getTableData()
             this.closeDialog()
           }
-
           break
         case 'edit':
           {
-            const res = await updataTreatType(this.form)
+            console.log('edit row ' + this.form.ID)
+            const res = await updateTreatType(this.form)
             if (res.success) {
               this.$message({
                 type: 'success',

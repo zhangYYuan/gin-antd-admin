@@ -49,12 +49,12 @@ type GetByIdStruct struct {
 func GetById(c *gin.Context) {
 	var idInfo GetByIdStruct
 	_ = c.BindJSON(&idInfo)
-	err, api := new(busModel.TreatType).GetById(idInfo.Id)
+	err, treatType := new(busModel.TreatType).GetById(idInfo.Id)
 	if err != nil {
 		servers.ReportFormat(c, false, fmt.Sprintf("TreatType获取数据失败，%v", err), gin.H{})
 	} else {
 		servers.ReportFormat(c, true, "TreatType获取数据成功", gin.H{
-			"api": api,
+			"treatType": treatType,
 		})
 
 	}
@@ -72,12 +72,12 @@ func Update(c *gin.Context) {
 }
 
 func GetAlls(c *gin.Context) {
-	err, apis := new(busModel.TreatType).GetAlls()
+	err, treatTypes := new(busModel.TreatType).GetAlls()
 	if err != nil {
 		servers.ReportFormat(c, false, fmt.Sprintf("获取TreatType数据失败，%v", err), gin.H{})
 	} else {
 		servers.ReportFormat(c, true, "获取TreatType数据成功", gin.H{
-			"apis": apis,
+			"treatTypes": treatTypes,
 		})
 	}
 }

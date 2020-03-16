@@ -12,8 +12,8 @@ func InitTreatTypeRouter(Router *gin.RouterGroup) {
 		TreatTypeRouter.POST("create", business.Create)
 		TreatTypeRouter.PUT("update", business.Update)
 		TreatTypeRouter.DELETE("delete", business.Delete)
-		TreatTypeRouter.GET("getalls", business.GetAlls)
-		TreatTypeRouter.GET("getbyid", business.GetById)
+		TreatTypeRouter.POST("getalls", business.GetAlls)
+		TreatTypeRouter.POST("getbyid", business.GetById)
 		TreatTypeRouter.POST("getpagelist", business.GetPageList)
 	}
 }

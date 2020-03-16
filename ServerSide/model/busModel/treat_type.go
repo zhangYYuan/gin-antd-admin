@@ -31,6 +31,8 @@ type TreatType struct {
 	Describe string `json:"describe" gorm:"type:text;not null"`
 	Level int `json:"level" gorm:"type:tinyint;default 1;not null"`
 	Region int `json:"region" gorm:"type:tinyint;default 1;not null"`
+	//StartDate time.Time `json:"start_date"`
+	//EndDate time.Time `json:"end_date"`
 }
 
 //新增
