@@ -114,31 +114,21 @@ export default {
                 {
                   path: '/welcome/treat',
                   name: 'treat',
-                  component: './Welcome',
+                  component: './welcome/index',
                 },
               ],
             },
             {
-              path: '/admin',
-              name: 'admin',
-              icon: 'crown',
-              component: './Admin',
-              authority: ['admin'],
+              name: 'sys',
+              icon: 'setting',
+              path: '/sys',
               routes: [
                 {
-                  path: '/admin/sub-page',
-                  name: 'sub-page',
-                  icon: 'smile',
-                  component: './Welcome',
-                  authority: ['admin'],
-                },
-              ],
-            },
-            {
-              name: 'list.table-list',
-              icon: 'table',
-              path: '/list',
-              component: './ListTableList',
+                  name: 'menu',
+                  path: '/sys/menu',
+                  component: './sys/menu',
+                }
+              ]
             },
             {
               component: './404',

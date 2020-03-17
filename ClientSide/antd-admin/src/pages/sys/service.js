@@ -1,10 +1,12 @@
 import request from '@/utils/request';
 
-export async function queryRule(params) {
-  return request('/api/rule', {
-    params,
+export async function addMenu(params) {
+  return request('/api/menu/addAntMenu', {
+    method: 'POST',
+    data: params
   });
 }
+
 export async function removeRule(params) {
   return request('/api/rule', {
     method: 'POST',

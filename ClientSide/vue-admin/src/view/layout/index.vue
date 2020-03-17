@@ -1,7 +1,9 @@
 <template>
   <el-container class="layout-cont" >
+<!--    <TagsView />-->
+    <L />
     <el-container :class="[isSider?'openside':'hideside',isMobile ? 'mobile': '']">
-      <el-row :class="[isShadowBg?'shadowBg':'']" @click.native="changeShadow()"></el-row>  
+      <el-row :class="[isShadowBg?'shadowBg':'']" @click.native="changeShadow()"></el-row>
       <el-aside class="main-cont main-left">
         <Aside class="aside" />
       </el-aside>
@@ -33,18 +35,7 @@
             </el-dropdown>
           </div>
         </el-header>
-        <!-- 当前面包屑用路由自动生成可根据需求修改 -->
-        <!-- 
-        :to="{ path: item.path }" 暂时注释不用-->
-        <el-breadcrumb class="breadcrumb" separator-class="el-icon-arrow-right">
-          <el-breadcrumb-item
-            :key="item.path"
-            v-for="item in matched.slice(1,matched.length)"
-          >{{item.meta.title}}</el-breadcrumb-item>
-        </el-breadcrumb>
-        <transition mode="out-in" name="el-fade-in-linear">
-          <router-view class="admin-box"></router-view>
-        </transition>
+        <TagsView />
       </el-main>
     </el-container>
   </el-container>
@@ -53,6 +44,9 @@
 <script>
 import Aside from '@/view/layout/aside'
 import { mapGetters, mapActions } from 'vuex'
+import TagsView from '@/components/TagsView'
+import L from '@/components/L'
+
 export default {
   name: 'Layout',
   data() {
@@ -64,7 +58,9 @@ export default {
     }
   },
   components: {
-    Aside
+    Aside,
+    TagsView,
+    L
   },
   created(){
      let screenWidth = document.body.clientWidth
@@ -92,7 +88,7 @@ export default {
       this.isSider = !!this.isCollapse
       this.totalCollapse()
     }
-   
+
   },
   computed: {
     ...mapGetters('user', ['userInfo']),

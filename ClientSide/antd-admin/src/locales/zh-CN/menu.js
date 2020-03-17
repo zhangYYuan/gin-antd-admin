@@ -1,6 +1,8 @@
 export default {
   'menu.welcome': '欢迎',
   'menu.welcome.treat': '请客管理',
+  'menu.sys': '系统',
+  'menu.sys.menu': '菜单',
   'menu.more-blocks': '更多区块',
   'menu.home': '首页',
   'menu.admin': '管理页',

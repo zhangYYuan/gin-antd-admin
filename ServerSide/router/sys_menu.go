@@ -20,8 +20,8 @@ func InitMenuRouter(Router *gin.RouterGroup) (R gin.IRoutes) {
 		MenuRouter.POST("getBaseMenuById", api.GetBaseMenuById)   //根据id获取菜单
 
 		// Ant Admin
-		//MenuRouter.POST("addAntMenu", api.AddAntMenu)
-		MenuRouter.POST("addBaseMenu", api.AddAntMenu)           // 新增菜单
+		MenuRouter.POST("addAntMenu", api.AddAntMenu)
+		//MenuRouter.POST("addBaseMenu", api.AddAntMenu)           // 新增菜单
 
 	}
 	return MenuRouter

@@ -1,41 +1,47 @@
-import React from 'react';
-import { HeartTwoTone, SmileTwoTone } from '@ant-design/icons';
-import { Card, Typography, Alert } from 'antd';
+import React, { useState } from 'react';
+  import { PlusOutlined } from '@ant-design/icons';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
+import { Table, Card, Button, Typography, Alert } from 'antd';
 
-export default () => (
-  <PageHeaderWrapper content=" 这个页面只有 admin 权限才能查看">
+import CreateForm from './components/CreateForm'
+import { addMenu } from '../service';
+
+const columns = [
+  {
+    title: '名称',
+    dataIndex: 'name',
+  },
+  {
+    title: '图标',
+    dataIndex: 'icon',
+  },
+  {
+    title: '菜单路径',
+    dataIndex: 'path',
+  },
+  {
+    title: '组件路径',
+    dataIndex: 'component',
+  }
+]
+
+
+const MenuIndex = () => {
+  const [createModalVisible, handleModalVisible] = useState(false);
+
+  return (
+  <PageHeaderWrapper>
     <Card>
-      <Alert
-        message="umi ui 现已发布，欢迎使用 npm run ui 启动体验。"
-        type="success"
-        showIcon
-        banner
-        style={{
-          margin: -12,
-          marginBottom: 48,
-        }}
-      />
-      <Typography.Title
-        level={2}
-        style={{
-          textAlign: 'center',
-        }}
-      >
-        <SmileTwoTone /> Ant Design Pro <HeartTwoTone twoToneColor="#eb2f96" /> You
-      </Typography.Title>
+      <div className='mb16'>
+        <Button type="primary" icon={<PlusOutlined />} onClick={() => handleModalVisible(true)}>新建</Button>
+      </div>
+      <Table columns={columns} />,
     </Card>
-    <p
-      style={{
-        textAlign: 'center',
-        marginTop: 24,
-      }}
-    >
-      Want to add more pages? Please refer to{' '}
-      <a href="https://pro.ant.design/docs/block-cn" target="_blank" rel="noopener noreferrer">
-        use block
-      </a>
-      。
-    </p>
+
+
+     <CreateForm modalVisible={createModalVisible} />
   </PageHeaderWrapper>
-);
+  )
+}
+
+export default MenuIndex
