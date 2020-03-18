@@ -108,6 +108,8 @@ const BasicLayout = props => {
         type: 'user/fetchCurrent',
       });
     }
+
+
   }, []);
   /**
    * init variables
@@ -155,6 +157,22 @@ const BasicLayout = props => {
     </ProLayout>
   );
 };
+
+const updateTree = (data) => {
+  const treeList = []
+  const getTreeList = d => {
+    d.forEach(node => {
+      if (!node.level) {
+        treeList.push({ tab: node.name, key: node.path,content: node.component, })
+      }
+      if (node.routes && node.routes.length > 0) {
+        getTreeList(node.routes)
+      }
+    })
+  }
+  getTreeList(data)
+  return treeList
+}
 
 export default connect(({ global, settings }) => ({
   collapsed: global.collapsed,

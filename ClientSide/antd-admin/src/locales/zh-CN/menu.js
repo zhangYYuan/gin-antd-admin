@@ -1,8 +1,11 @@
 export default {
   'menu.welcome': '欢迎',
   'menu.welcome.treat': '请客管理',
-  'menu.sys': '系统',
-  'menu.sys.menu': '菜单',
+  'menu.sys': '系统管理',
+  'menu.sys.menu': '菜单管理',
+  'menu.sys.role': '角色管理',
+  'menu.sys.user': '员工管理',
+  'menu.sys.depart': '部门管理',
   'menu.more-blocks': '更多区块',
   'menu.home': '首页',
   'menu.admin': '管理页',

@@ -127,7 +127,22 @@ export default {
                   name: 'menu',
                   path: '/sys/menu',
                   component: './sys/menu',
-                }
+                },
+                {
+                  name: 'role',
+                  path: '/sys/role',
+                  component: './sys/role',
+                },
+                {
+                  name: 'user',
+                  path: '/sys/user',
+                  component: './sys/user',
+                },
+                {
+                  name: 'depart',
+                  path: '/sys/depart',
+                  component: './sys/depart',
+                },
               ]
             },
             {
