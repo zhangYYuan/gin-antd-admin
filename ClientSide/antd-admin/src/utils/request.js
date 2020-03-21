@@ -63,7 +63,7 @@ request.interceptors.request.use((url, options) => {
       options: {
         ...options,
         headers: {
-          token,
+          'x-token': token,
         },
       },
     };
