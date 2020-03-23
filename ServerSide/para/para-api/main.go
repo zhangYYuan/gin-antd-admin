@@ -1,17 +1,12 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/gin-contrib/cors"
-	"para/para-api/controller"
+	_ "para.common/db"
+	"para/para-api/router"
 )
 
 
 func main() {
-	r := gin.Default()
-
-	r.Use(cors.Default())
-	r.POST("/register", controller.RegisterUser)
-	r.POST("/login", controller.LoginUser)
+	r := router.InitRouter()
 	r.Run(":3000")
 }

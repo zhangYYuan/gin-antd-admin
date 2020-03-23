@@ -1,20 +1,17 @@
 package models
 
-import "github.com/jinzhu/gorm"
+import (
+	"github.com/jinzhu/gorm"
+)
 
-type User struct {
+type SysUser struct {
 	gorm.Model
-	ID uint 		`gorm:"primary_key"`
-	Phone string 	`gorm:"type:varchar(11);unique"`
-	Password string	 `gorm:"size:2"`
+	UserName string `json:"userName"`
+	PassWord string	`json:"passWord"`
 }
 
-type JwtToken struct {
-	Token string `json:"token"`
-}
-
-
-
-func (User) TableName() string {
-	return "profile"
-}
+//func (u *SysUser) Login(err error, user *SysUser) {
+//	var user SysUser
+//	u.PassWord = utils.MD5V([]byte(u.PassWord))
+//	return use
+//}
