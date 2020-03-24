@@ -23,8 +23,9 @@ func NewJWT() *JWT {
 // 创建一个token
 func (j *JWT) GenerateToken (user models.SysUser) (string, error) {
 	expirationTime := time.Now().Add(7 * 24 *time.Hour)
+
 	claims := &Claims{
-		UserId:         user.ID,
+		UserId:         1,
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: expirationTime.Unix(),
 			IssuedAt: time.Now().Unix(),
@@ -33,7 +34,7 @@ func (j *JWT) GenerateToken (user models.SysUser) (string, error) {
 		},
 	}
 	token := jwt.NewWithClaims(jwt.SigningMethodES256, claims)
-
+	//fmt.Println(user.ID, j.SigningKey)
 	return token.SignedString(j.SigningKey)
 }
 
