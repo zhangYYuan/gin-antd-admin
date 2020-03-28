@@ -1,8 +1,9 @@
 import { stringify } from 'querystring';
-import { router } from 'umi';
+import { history } from 'umi';
 import { fakeAccountLogin } from '@/services/login';
 import { setAuthority } from '@/utils/authority';
 import { getPageQuery } from '@/utils/utils';
+import { encryption } from '@/utils/enctypt'
 
 const Model = {
   namespace: 'login',
@@ -12,23 +13,29 @@ const Model = {
   },
   effects: {
     *login({ payload }, { call, put }) {
-      const response = yield call(fakeAccountLogin, payload);
+      // 登录参数处理
+      const { password } = payload
+      const p = {
+        ...payload,
+        password: encryption(password),
+        'grant_type':'password',
+        'scope': 'server'
+      }
+      const response = yield call(fakeAccountLogin, p);
       yield put({
         type: 'changeLoginStatus',
         payload: response,
       }); // Login successfully
-      const { token, user } = response.data;
+      const token = response.access_token;
       localStorage.setItem('antd-pro-token', token);
-      localStorage.setItem('antd-pro-user', JSON.stringify(user));
-
-      if (response.success === true) {
+      localStorage.setItem('antd-pro-user', JSON.stringify(response));
+      if (token) {
         const urlParams = new URL(window.location.href);
         const params = getPageQuery();
         let { redirect } = params;
 
         if (redirect) {
           const redirectUrlParams = new URL(redirect);
-          console.log('-------->', redirectUrlParams.origin, urlParams.origin);
           if (redirectUrlParams.origin === urlParams.origin) {
             redirect = redirect.substr(urlParams.origin.length);
             if (redirect.match(/^\/.*#/)) {
@@ -39,8 +46,8 @@ const Model = {
             return;
           }
         }
-        window.location.href = redirect || '/';
-        // router.replace(redirect || '/');
+        // window.location.href = redirect || '/';
+        history.push(redirect || '/');
       }
     },
 
@@ -48,7 +55,7 @@ const Model = {
       const { redirect } = getPageQuery(); // Note: There may be security issues, please note
 
       if (window.location.pathname !== '/user/login' && !redirect) {
-        router.replace({
+        history.replace({
           pathname: '/user/login',
           search: stringify({
             redirect: window.location.href,

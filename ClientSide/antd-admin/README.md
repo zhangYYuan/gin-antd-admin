@@ -20,3 +20,4 @@
 
 #### 参考链接
 [ant-design-pro-plus](https://github.com/zpr1g/ant-design-pro-plus/tree/v2)
+[Jeecg Boot](http://boot.jeecg.com/user/login?redirect=%2Fisystem%2FnewPermissionList)

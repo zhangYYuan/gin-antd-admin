@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'umi';
 import { Tag, message } from 'antd';
-import { connect } from 'dva';
 import groupBy from 'lodash/groupBy';
 import moment from 'moment';
 import NoticeIcon from '../NoticeIcon';
@@ -28,7 +28,6 @@ class GlobalHeaderRight extends Component {
       });
     }
   };
-
   handleNoticeClear = (title, key) => {
     const { dispatch } = this.props;
     message.success(`${'清空了'} ${title}`);
@@ -40,11 +39,10 @@ class GlobalHeaderRight extends Component {
       });
     }
   };
-
   getNoticeData = () => {
     const { notices = [] } = this.props;
 
-    if (notices.length === 0) {
+    if (!notices || notices.length === 0) {
       return {};
     }
 
@@ -82,7 +80,6 @@ class GlobalHeaderRight extends Component {
     });
     return groupBy(newNotices, 'type');
   };
-
   getUnreadData = noticeData => {
     const unreadMsg = {};
     Object.keys(noticeData).forEach(key => {

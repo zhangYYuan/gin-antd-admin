@@ -238,7 +238,7 @@ const TableList = () => {
             const success = await handleUpdate(value);
 
             if (success) {
-              handleModalVisible(false);
+              handleUpdateModalVisible(false);
               setStepFormValues({});
 
               if (actionRef.current) {

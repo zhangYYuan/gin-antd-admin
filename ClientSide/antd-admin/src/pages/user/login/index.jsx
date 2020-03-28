@@ -26,6 +26,7 @@ const Login = props => {
   const [type, setType] = useState('account');
 
   const handleSubmit = values => {
+
     const { dispatch } = props;
     dispatch({
       type: 'login/login',
@@ -42,7 +43,7 @@ const Login = props => {
           )}
 
           <UserName
-            name="userName"
+            name="username"
             placeholder="用户名: admin or user"
             rules={[
               {
@@ -107,15 +108,15 @@ const Login = props => {
           </a>
         </div>
         <Submit loading={submitting}>登录</Submit>
-        <div className={styles.other}>
-          其他登录方式
-          <AlipayCircleOutlined className={styles.icon} />
-          <TaobaoCircleOutlined className={styles.icon} />
-          <WeiboCircleOutlined className={styles.icon} />
-          <Link className={styles.register} to="/user/register">
-            注册账户
-          </Link>
-        </div>
+        {/* <div className={styles.other}> */}
+        {/*  其他登录方式 */}
+        {/*  <AlipayCircleOutlined className={styles.icon} /> */}
+        {/*  <TaobaoCircleOutlined className={styles.icon} /> */}
+        {/*  <WeiboCircleOutlined className={styles.icon} /> */}
+        {/*  <Link className={styles.register} to="/user/register"> */}
+        {/*    注册账户 */}
+        {/*  </Link> */}
+        {/* </div> */}
       </LoginFrom>
     </div>
   );

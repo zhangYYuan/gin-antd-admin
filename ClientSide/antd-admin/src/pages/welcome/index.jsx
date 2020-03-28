@@ -6,19 +6,6 @@ import { PlusOutlined } from '@ant-design/icons';
 import { queryTreatType } from './service';
 import CreateForm from './components/CreateForm';
 
-
-/**
- * CreatedAt: "2020-03-14T17:37:27+08:00"
- DeletedAt: null
- ID: 1
- UpdatedAt: "2020-03-14T17:37:27+08:00"
- describe: "美食王国"
- level: 3
- name: "美食系"
- region: 2
- status: 0
- * @type {({dataIndex: string, title: string}|{dataIndex: string, title: string}|{dataIndex: string, title: string}|{dataIndex: string, valueType: string, title: string}|{dataIndex: string, valueType: string, title: string})[]}
- */
 const columns = [
   {
     title: '#',
@@ -59,7 +46,6 @@ const TableList = () => {
           columns={columns}
           request={async () => {
             const res = await queryTreatType({ page: 1, pageSize: 10 })
-            console.log(res.data.list)
             return {
               data: res.data.list,
               page: 1,

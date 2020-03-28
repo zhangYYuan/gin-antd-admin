@@ -6,6 +6,8 @@ export default {
   'menu.sys.role': '角色管理',
   'menu.sys.user': '员工管理',
   'menu.sys.depart': '部门管理',
+  'menu.wms': '仓储管理',
+  'menu.wms.shop': '门店管理',
   'menu.more-blocks': '更多区块',
   'menu.home': '首页',
   'menu.admin': '管理页',

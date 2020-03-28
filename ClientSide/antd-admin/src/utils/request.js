@@ -2,6 +2,7 @@
  * request 网络请求工具
  * 更详细的 api 文档: https://github.com/umijs/umi-request
  */
+import {  } from 'umi';
 import { extend } from 'umi-request';
 import { notification } from 'antd';
 
@@ -28,14 +29,20 @@ const codeMessage = {
 
 const errorHandler = error => {
   const { response } = error;
-
   if (response && response.status) {
-    const errorText = codeMessage[response.status] || response.statusText;
-    const { status, url } = response;
-    notification.error({
-      message: `请求错误 ${status}: ${url}`,
-      description: errorText,
-    });
+    if (response.status === 401){
+      // 登录失效，清除保存的数据，并退出登录
+      localStorage.clear()
+      router.replace('/user/login');
+
+    } else {
+      const errorText = codeMessage[response.status] || response.statusText;
+      const { status, url } = response;
+      notification.error({
+        message: `请求错误 ${status}: ${url}`,
+        description: errorText,
+      });
+    }
   } else if (!response) {
     notification.error({
       description: '您的网络发生异常，无法连接服务器',
@@ -51,19 +58,21 @@ const errorHandler = error => {
  */
 const request = extend({
   errorHandler,
+  prefix: '/hb',
   // 默认错误处理
   credentials: 'include', // 默认请求是否带上cookie
 });
 
 request.interceptors.request.use((url, options) => {
-  const token = localStorage.getItem('antd-pro-token');
+  let token = localStorage.getItem('antd-pro-token');
+  token = token ? `bearer ${token}` : 'Basic bXVzZWU6MjAxOTA3MTU'
   if (token) {
     return {
       url,
       options: {
         ...options,
         headers: {
-          'x-token': token,
+          'Authorization': token,
         },
       },
     };

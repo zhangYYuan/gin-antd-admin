@@ -7,10 +7,15 @@
  */
 export default {
   dev: {
-    '/api/': {
-      target: 'http://localhost:8080/',
+    // '/api/': {
+    //   target: 'http://localhost:8080/',
+    //   changeOrigin: true,
+    //   pathRewrite: { '^/api': '/api' }, // /server/api/currentUser -> /api/currentUser
+    // },
+    '/hb/': {
+      target: 'http://dev.api.musee.com.cn/',
       changeOrigin: true,
-      pathRewrite: { '^/api': '/api' }, // /server/api/currentUser -> /api/currentUser
+      pathRewrite: { '^/hb': '/hb' }, // /server/api/currentUser -> /api/currentUser
     },
   },
   test: {

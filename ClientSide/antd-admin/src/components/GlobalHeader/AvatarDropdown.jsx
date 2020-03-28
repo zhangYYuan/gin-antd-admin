@@ -1,8 +1,7 @@
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 import { Avatar, Menu, Spin } from 'antd';
 import React from 'react';
-import { connect } from 'dva';
-import { router } from 'umi';
+import { history, connect } from 'umi';
 import HeaderDropdown from '../HeaderDropdown';
 import styles from './index.less';
 
@@ -22,18 +21,17 @@ class AvatarDropdown extends React.Component {
       return;
     }
 
-    router.push(`/account/${key}`);
+    history.push(`/account/${key}`);
   };
 
   render() {
     const {
       currentUser = {
-        headerImg: '',
-        nickName: '',
+        avatar: '',
+        name: '',
       },
       menu,
     } = this.props;
-
     const menuHeaderDropdown = (
       <Menu className={styles.menu} selectedKeys={[]} onClick={this.onMenuClick}>
         {menu && (
@@ -56,21 +54,23 @@ class AvatarDropdown extends React.Component {
         </Menu.Item>
       </Menu>
     );
-    return currentUser && currentUser.nickName ? (
+    return currentUser && currentUser.name ? (
       <HeaderDropdown overlay={menuHeaderDropdown}>
         <span className={`${styles.action} ${styles.account}`}>
-          <Avatar size="small" className={styles.avatar} src={currentUser.headerImg} alt="avatar" />
-          <span className={styles.name}>{currentUser.nickName}</span>
+          <Avatar size="small" className={styles.avatar} src={currentUser.avatar} alt="avatar" />
+          <span className={styles.name}>{currentUser.name}</span>
         </span>
       </HeaderDropdown>
     ) : (
-      <Spin
-        size="small"
-        style={{
-          marginLeft: 8,
-          marginRight: 8,
-        }}
-      />
+      <span className={`${styles.action} ${styles.account}`}>
+        <Spin
+          size="small"
+          style={{
+            marginLeft: 8,
+            marginRight: 8,
+          }}
+        />
+      </span>
     );
   }
 }
