@@ -2,7 +2,7 @@
  * request 网络请求工具
  * 更详细的 api 文档: https://github.com/umijs/umi-request
  */
-import {  } from 'umi';
+import { history } from 'umi';
 import { extend } from 'umi-request';
 import { notification } from 'antd';
 
@@ -33,7 +33,7 @@ const errorHandler = error => {
     if (response.status === 401){
       // 登录失效，清除保存的数据，并退出登录
       localStorage.clear()
-      router.replace('/user/login');
+      history.replace('/user/login');
 
     } else {
       const errorText = codeMessage[response.status] || response.statusText;

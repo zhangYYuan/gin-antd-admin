@@ -1,7 +1,7 @@
 import React from 'react';
 import {Form, Modal} from 'antd';
-// import AddressForm from '@/components/AForm/AddressForm'
-import RightContent from '@/components/GlobalHeader/RightContent';
+import AddressForm from '@/components/AForm/AddressForm';
+
 
 
 const CreateForm = props => {
@@ -19,7 +19,7 @@ const CreateForm = props => {
           name="address"
           label="地址"
         >
-          <RightContent />
+          <AddressForm />
         </Form.Item>
       </Form>
     </Modal>

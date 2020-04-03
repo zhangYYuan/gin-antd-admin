@@ -1,45 +1,65 @@
-import React, { userState } from "react";
-import {Form, Input, Select, Button, Cascader} from "antd";
+import React, { useState, useEffect } from "react";
+import {  Cascader} from "antd";
+import { queryProvince, queryCity, queryCountry } from '@/services/common';
 
-const options = [
-  {
-    value: 'zhejiang',
-    label: 'Zhejiang',
-    children: [
-      {
-        value: 'hangzhou',
-        label: 'Hangzhou',
-        children: [
-          {
-            value: 'xihu',
-            label: 'West Lake',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    value: 'jiangsu',
-    label: 'Jiangsu',
-    children: [
-      {
-        value: 'nanjing',
-        label: 'Nanjing',
-        children: [
-          {
-            value: 'zhonghuamen',
-            label: 'Zhong Hua Men',
-          },
-        ],
-      },
-    ],
-  },
-];
 
-const AddressForm = ({ value = {}, onChange }) =>{
 
+const AddressForm = () =>{
+  const [options, setOptions] = useState([])
+  const [select, setSelect] = useState([])
+  const initProvince = async () => {
+    const res = await queryProvince()
+    const v = res.resultBody.map(i => ({ label: i.name, value: i.id, level: i.level, isLeaf: false }))
+    return v
+  }
+
+
+  const initCity = async (params) => {
+    const res = await queryCity(params)
+    const v = res.resultBody.map(i => ({ label: i.name, value: i.id, level: i.level, isLeaf: params.provinceById === 1 }))
+    return v
+  }
+
+  const initCountry = async (params) => {
+    const res = await queryCountry(params)
+    const v = res.resultBody.map(i => ({ label: i.name, value: i.id, level: i.level, isLeaf: params.provinceById === 1 }))
+    return v
+  }
+
+  const loadData = async (selectedOptions) => {
+    const targetOption = selectedOptions[selectedOptions.length - 1];
+    targetOption.loading = true;
+    if (targetOption.level === 0) {
+      const params = { provinceById: targetOption.value }
+      const v = await initCity(params)
+      targetOption.loading = false;
+      targetOption.children = v
+      setOptions([...options])
+    } else if (targetOption.level === 1) {
+      console.log('loadData', select)
+      // const params = { cityId: select[] }
+      // const v = await initCountry(params)
+
+    }
+  }
+  useEffect(  () => {
+
+    initProvince().then(op => {
+      setOptions(op)
+    })
+  }, [])
+
+  const onChange = (value, selectedOptions)  => {
+    setSelect(selectedOptions)
+
+  }
   return (
-    <Cascader option={options} onChange={onChange} placeholder="Please select"/>
+    <Cascader
+      options={options}
+      loadData={loadData}
+      onChange={onChange}
+      changeOnSelect
+    />
   )
 }
 
