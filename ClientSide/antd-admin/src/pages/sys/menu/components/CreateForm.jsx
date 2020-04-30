@@ -13,7 +13,6 @@ const CreateForm = props => {
   const confirmAction = () => {
     form.validateFields().then(values => {
       addMenu(values).then(res => {
-        console.log('------>>>', res)
       })
     })
   }

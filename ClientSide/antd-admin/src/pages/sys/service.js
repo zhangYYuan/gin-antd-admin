@@ -25,3 +25,14 @@ export async function queryRole(params) {
     params
   });
 }
+
+/**
+ * 菜单
+ * @returns {Promise<void>}
+ */
+export async function queryMenu(params) {
+  return request('sys/menu/list', {
+    method: 'get',
+    params
+  });
+}

@@ -98,18 +98,6 @@ export default defineConfig({
               ]
             },
             {
-              name: 'wms',
-              icon: 'strikethrough',
-              path: '/wms',
-              routes: [
-                {
-                  name: 'shop',
-                  path: '/wms/shop',
-                  component: './wms/shop',
-                }
-              ]
-            },
-            {
               component: './404',
             },
           ],
