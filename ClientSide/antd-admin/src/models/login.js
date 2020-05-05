@@ -46,7 +46,6 @@ const Model = {
             return;
           }
         }
-        // window.location.href = redirect || '/';
         history.push(redirect || '/');
       }
     },

@@ -141,13 +141,20 @@ const BasicLayout = props => {
         menuDataRender={menuDataRender}
         rightContentRender={() => <RightContent />}
         {...props}
+        {...settings}
       >
         <Authorized authority={authorized.authority} noMatch={noMatch}>
           {children}
         </Authorized>
       </ProLayout>
       <SettingDrawer
-        setting={settings}
+        settings={settings}
+        onSettingChange={config =>
+          dispatch({
+            type: 'settings/changeSetting',
+            payload: config,
+          })
+        }
       />
     </>
   );

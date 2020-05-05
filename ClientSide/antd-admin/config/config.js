@@ -55,17 +55,13 @@ export default defineConfig({
           // authority: ['admin', 'user'],
           routes: [
             {
-              path: '/',
-              redirect: '/welcome/treat',
-            },
-            {
               path: '/welcome',
               name: 'welcome',
               icon: 'smile',
               routes: [
                 {
-                  path: '/welcome/treat',
-                  name: 'treat',
+                  path: '/welcome/workplace',
+                  name: 'workplace',
                   component: './welcome/index',
                 },
               ],
@@ -98,18 +94,16 @@ export default defineConfig({
               ]
             },
             {
-              component: './404',
+              path: '/',
+              redirect: '/welcome/workplace',
             },
+            {
+              component: './404',
+            }
           ],
-        },
-        {
-          component: './404',
-        },
+        }
       ],
-    },
-    {
-      component: './404',
-    },
+    }
   ],
   // Theme for antd: https://ant.design/docs/react/customize-theme-cn
   theme: {

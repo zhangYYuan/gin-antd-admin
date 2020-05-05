@@ -1,6 +1,6 @@
 export default {
   'menu.welcome': '欢迎',
-  'menu.welcome.treat': '请客管理',
+  'menu.welcome.workplace': '工作台',
   'menu.sys': '系统管理',
   'menu.sys.menu': '菜单管理',
   'menu.sys.role': '角色管理',

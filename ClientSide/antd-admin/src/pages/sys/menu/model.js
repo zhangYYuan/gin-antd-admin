@@ -1,21 +1,29 @@
-import { addFakeList } from '../service';
-
+import { queryMenu } from '../service';
+import {connect} from "dva";
 
 const Model = {
   namespace: 'sysMenu',
   state: {
-    list: [],
+    menuList: [],
   },
   effects: {
     * fetch({payload}, {call, put}) {
-      console.log('------->fetch')
+      const response = yield call(queryMenu, payload);
+      if (response.resultCode === 200) {
+        yield put({
+          type: 'queryMenu',
+          payload: response.resultBody,
+        });
+      }
     },
   },
   reducers: {
-    queryList(state, action) {
-      return { ...state, list: action.payload };
+    queryMenu(state, action) {
+      console.log('------->fetch', action.payload)
+      return { ...state, menuList: action.payload };
     },
   }
 }
 
 export default Model;
+

@@ -1,19 +1,21 @@
 import React, {useEffect, useState} from 'react';
+import ProTable from '@ant-design/pro-table';
 import { connect } from 'dva';
-import { Table, Card, Button } from 'antd';
+import { Card, Button } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
-
-import CreateForm from './components/CreateForm'
+import { queryMenu } from '../service';
+import CreateMenu from './components/CreateMenu';
+import CreateForm from "@/pages/ListTableList/components/CreateForm";
 
 const columns = [
   {
     title: '菜单编号',
-    dataIndex: 'menuId',
+    dataIndex: 'menuCode',
   },
   {
     title: '名称',
-    dataIndex: 'name',
+    dataIndex: 'menuName',
   },
   {
     title: '图标',
@@ -24,40 +26,45 @@ const columns = [
     dataIndex: 'path',
   },
   {
-    title: '组件路径',
+    title: '组件名',
     dataIndex: 'component',
+  },
+  {
+    title: '权限',
+    dataIndex: 'permission',
   }
 ]
 
 const MenuIndex = props => {
-  const {
-    dispatch,
-    sysMenu: { menuList },
-  } = props;
-
-  useEffect(() => {
-    console.log(props)
-    dispatch({
-      type: 'sysMenu/fetch',
-      payload: {
-        count: 5,
-      },
-    });
-  }, []);
-
   const [createModalVisible, handleModalVisible] = useState(false);
 
   return (
     <PageHeaderWrapper>
       <Card>
-        <div className='mb16'>
-          <Button type="primary" icon={<PlusOutlined />} onClick={() => handleModalVisible(true)}>新建</Button>
-        </div>
-        <Table columns={columns} />,
+        <ProTable
+          rowKey="menuCode"
+          search={false}
+          columns={columns}
+          request={async params => {
+            const res = await queryMenu(params)
+            return {
+              data: res.resultBody,
+              page: params.current,
+              success: true,
+              total: res.resultBody.totalCount,
+            }
+          }}
+          toolBarRender={() => [
+            <Button key="3" type="primary" onClick={() => handleModalVisible(true)}>
+              <PlusOutlined />
+              新建
+            </Button>,
+          ]}
+        >
+        </ProTable>
+
       </Card>
-
-
-      <CreateForm modalVisible={createModalVisible} />
+      <CreateMenu onCancel={() => handleModalVisible(false)} modalVisible={createModalVisible} />
     </PageHeaderWrapper>
   )
 }
