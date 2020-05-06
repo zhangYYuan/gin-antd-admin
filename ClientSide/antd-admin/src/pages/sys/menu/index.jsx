@@ -37,11 +37,12 @@ const columns = [
 
 const MenuIndex = props => {
   const [createModalVisible, handleModalVisible] = useState(false);
-
+  const [authVisible, handleAuthVisible] = useState(false);
   return (
-    <PageHeaderWrapper>
+    <PageHeaderWrapper title={false}>
       <Card>
         <ProTable
+          bordered={true}
           rowKey="menuCode"
           search={false}
           columns={columns}
