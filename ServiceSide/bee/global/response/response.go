@@ -27,8 +27,15 @@ func Result(code int, data interface{}, msg string, c * gin.Context)  {
 func Success(c *gin.Context) {
 	Result(SUCEESS, map[string]interface{}{}, "操作成功", c)
 }
+func SuccessWithData(data interface{}, c *gin.Context) {
+	Result(SUCEESS, data, "操作成功", c)
+}
 func SuccessWithDescription(data interface{}, msg string, c *gin.Context)  {
 	Result(SUCEESS, data, msg, c)
+}
+
+func FailWithMessage(message string, c *gin.Context) {
+	Result(ERROR, map[string]interface{}{}, message, c)
 }
 func FailWithDescription(code int, data interface{}, msg string, c *gin.Context)  {
 	Result(code, data, msg, c)

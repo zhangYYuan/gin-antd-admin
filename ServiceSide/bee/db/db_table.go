@@ -5,5 +5,6 @@ import "bee/model"
 func InitTables() {
 	BeeDB.AutoMigrate(
 		model.SysUser{},
+		model.SysAuthority{},
 	)
 }

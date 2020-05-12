@@ -23,3 +23,15 @@ func Register(u model.SysUser) (error, model.SysUser)  {
 	}
 	return err, u
 }
+
+func Login(u *model.SysUser) (error, *model.SysUser)  {
+	var user model.SysUser
+	var err error
+	u.Password = utils.MD5V([]byte(u.Password))
+	err = db.BeeDB.Where("user_name = ? AND password = ?", u.UserName, u.Password).First(&user).Error
+	if err != nil {
+		return err, &user
+	}
+	err = db.BeeDB.Where("authority_id = ?", user.AuthorityId).First(&user.Authority).Error
+	return err, &user
+}

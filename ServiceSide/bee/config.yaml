@@ -1,0 +1,22 @@
+# jwt configuration
+jwt:
+  signing-key: 'beeAdmin'
+
+# mysql connect configuration
+mysql:
+  username: root
+  password: 'Aa@6447985'
+  path: '127.0.0.1:3306'
+  db-name: 'qmplus'
+  config: 'charset=utf8&parseTime=True&loc=Local'
+  max-idle-conns: 10
+  max-open-conns: 10
+  log-mode: true
+
+
+# system configuration
+system:
+  use-multipoint: false
+  env: 'public'  # Change to "develop" to skip authentication for development mode
+  addr: 8888
+  db-type: "mysql"

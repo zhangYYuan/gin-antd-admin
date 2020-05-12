@@ -2,8 +2,8 @@ package request
 
 import "bee/model"
 
-// 接收注册数据结构体
-type RegisterStruct struct {
+// 注册
+type RegisterResponse struct {
 	Username string 	`json:"userName"`
 	Password string 	`json:"password"`
 	NickName string		`json:"nickName" gorm:"default:'cute bee'"`
@@ -12,8 +12,10 @@ type RegisterStruct struct {
 }
 
 // 返回注册结果
-type SysUserResponse struct {
-	User model.SysUser  `json:"user"`
+type LoginResponse struct {
+	User  		model.SysUser  `json:"user"`
+	Token 		string		`json:"token"`
+	ExpiresAt 	int64		`json:"expiresAt"`
 }
 
 type RegisterAndLoginStruct struct {
