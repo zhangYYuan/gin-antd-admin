@@ -4,6 +4,8 @@ type Server struct {
 	Mysql   Mysql    `mapstructure:"mysql" json:"mysql"`
 	JWT     JWT      `mapstructure:"jwt" json:"jwt"`
 	System 	System	 `mapstructure:"system" json:"system"`
+	Casbin  Casbin  `mapstructure:"casbin" json:"casbin"`
+
 }
 
 type Mysql struct {
