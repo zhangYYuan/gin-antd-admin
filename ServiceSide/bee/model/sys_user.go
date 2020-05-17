@@ -27,7 +27,7 @@ type SysAuthority struct {
 type SysUser struct {
 	gorm.Model
 	UUID uuid.UUID 		`json:"uuid"`
-	UserName string		`json:"userName"`
+	UserName string		`json:"username"`
 	Password string		`json:"-"`
 	NickName string		`json:"nickName" gorm:"default:'cute bee'"`
 	HeaderImg string    `json:"headerImg" gorm:"default:'https://jdc.jd.com/img/200'"`
