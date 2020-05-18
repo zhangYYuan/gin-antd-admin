@@ -1,45 +1,260 @@
-import { StepBackwardOutlined, QuestionOutlined, EditOutlined, AreaChartOutlined, AndroidOutlined, AccountBookOutlined } from '@ant-design/icons';
-export default [
-  {
-    title: '方向性图标',
-    key: '1',
-    icons: [
-      <StepBackwardOutlined />,
-    ]
-  },
-  {
-    title: '提示建议性图标',
-    key: '2',
-    icons: [
-      <QuestionOutlined />
-    ]
-  },
-  {
-    title: '编辑类图标',
-    key: '3',
-    icons: [
-      <EditOutlined />
-    ]
-  },
-  {
-    title: '数据类图标',
-    key: '4',
-    icons: [
-      <AreaChartOutlined />
-    ]
-  },
-  {
-    title: '品牌和标识',
-    key: '5',
-    icons: [
-      <AndroidOutlined />
-    ]
-  },
-  {
-    title: '网站通用图标',
-    key: '6',
-    icons: [
-      <AccountBookOutlined />
-    ]
-  }
-]
+import * as AntdIcons from '@ant-design/icons';
+
+
+console.log('-->', AntdIcons)
+const all = Object.keys(AntdIcons)
+  .map(n => n.replace(/(Outlined|Filled|TwoTone)$/, ''))
+  .filter((n, i, arr) => arr.indexOf(n) === i);
+
+const direction = [
+  'StepBackward',
+  'StepForward',
+  'FastBackward',
+  'FastForward',
+  'Shrink',
+  'ArrowsAlt',
+  'Down',
+  'Up',
+  'Left',
+  'Right',
+  'CaretUp',
+  'CaretDown',
+  'CaretLeft',
+  'CaretRight',
+  'UpCircle',
+  'DownCircle',
+  'LeftCircle',
+  'RightCircle',
+  'DoubleRight',
+  'DoubleLeft',
+  'VerticalLeft',
+  'VerticalRight',
+  'VerticalAlignTop',
+  'VerticalAlignMiddle',
+  'VerticalAlignBottom',
+  'Forward',
+  'Backward',
+  'Rollback',
+  'Enter',
+  'Retweet',
+  'Swap',
+  'SwapLeft',
+  'SwapRight',
+  'ArrowUp',
+  'ArrowDown',
+  'ArrowLeft',
+  'ArrowRight',
+  'PlayCircle',
+  'UpSquare',
+  'DownSquare',
+  'LeftSquare',
+  'RightSquare',
+  'Login',
+  'Logout',
+  'MenuFold',
+  'MenuUnfold',
+  'BorderBottom',
+  'BorderHorizontal',
+  'BorderInner',
+  'BorderOuter',
+  'BorderLeft',
+  'BorderRight',
+  'BorderTop',
+  'BorderVerticle',
+  'PicCenter',
+  'PicLeft',
+  'PicRight',
+  'RadiusBottomleft',
+  'RadiusBottomright',
+  'RadiusUpleft',
+  'RadiusUpright',
+  'Fullscreen',
+  'FullscreenExit',
+];
+
+const suggestion = [
+  'Question',
+  'QuestionCircle',
+  'Plus',
+  'PlusCircle',
+  'Pause',
+  'PauseCircle',
+  'Minus',
+  'MinusCircle',
+  'PlusSquare',
+  'MinusSquare',
+  'Info',
+  'InfoCircle',
+  'Exclamation',
+  'ExclamationCircle',
+  'Close',
+  'CloseCircle',
+  'CloseSquare',
+  'Check',
+  'CheckCircle',
+  'CheckSquare',
+  'ClockCircle',
+  'Warning',
+  'IssuesClose',
+  'Stop',
+];
+
+const editor = [
+  'Edit',
+  'Form',
+  'Copy',
+  'Scissor',
+  'Delete',
+  'Snippets',
+  'Diff',
+  'Highlight',
+  'AlignCenter',
+  'AlignLeft',
+  'AlignRight',
+  'BgColors',
+  'Bold',
+  'Italic',
+  'Underline',
+  'Strikethrough',
+  'Redo',
+  'Undo',
+  'ZoomIn',
+  'ZoomOut',
+  'FontColors',
+  'FontSize',
+  'LineHeight',
+  'Dash',
+  'SmallDash',
+  'SortAscending',
+  'SortDescending',
+  'Drag',
+  'OrderedList',
+  'UnorderedList',
+  'RadiusSetting',
+  'ColumnWidth',
+  'ColumnHeight',
+];
+
+const data = [
+  'AreaChart',
+  'PieChart',
+  'BarChart',
+  'DotChart',
+  'LineChart',
+  'RadarChart',
+  'HeatMap',
+  'Fall',
+  'Rise',
+  'Stock',
+  'BoxPlot',
+  'Fund',
+  'Sliders',
+];
+
+const logo = [
+  'Android',
+  'Apple',
+  'Windows',
+  'Ie',
+  'Chrome',
+  'Github',
+  'Aliwangwang',
+  'Dingding',
+  'WeiboSquare',
+  'WeiboCircle',
+  'TaobaoCircle',
+  'Html5',
+  'Weibo',
+  'Twitter',
+  'Wechat',
+  'Youtube',
+  'AlipayCircle',
+  'Taobao',
+  'Skype',
+  'Qq',
+  'MediumWorkmark',
+  'Gitlab',
+  'Medium',
+  'Linkedin',
+  'GooglePlus',
+  'Dropbox',
+  'Facebook',
+  'Codepen',
+  'CodeSandbox',
+  'CodeSandboxCircle',
+  'Amazon',
+  'Google',
+  'CodepenCircle',
+  'Alipay',
+  'AntDesign',
+  'AntCloud',
+  'Aliyun',
+  'Zhihu',
+  'Slack',
+  'SlackSquare',
+  'Behance',
+  'BehanceSquare',
+  'Dribbble',
+  'DribbbleSquare',
+  'Instagram',
+  'Yuque',
+  'Alibaba',
+  'Yahoo',
+  'Reddit',
+  'Sketch',
+];
+
+// const nots = [
+//   "AlipaySquare",
+//   "AmazonCircle",
+//   "AmazonSquare",
+//   "BehanceCircle",
+//   "CodeSandboxSquare",
+//   "CodepenSquare",
+//   "DingtalkCircle",
+//   "DingtalkSquare",
+//   "DribbbleCircle",
+//   "DropboxCircle",
+//   "DropboxSquare",
+//   "Golden",
+//   "GoogleCircle",
+//   "GooglePlusCircle",
+//   "GooglePlusSquare",
+//   "GoogleSquare",
+//   "IeCircle",
+//   "IeSquare",
+//   "MediumCircle",
+//   "MediumSquare",
+//   "QqCircle",
+//   "QqSquare",
+//   "RedditCircle",
+//   "RedditSquare",
+//   "Signal",
+//   "SketchCircle",
+//   "SketchSquare",
+//   "SlackCircle",
+//   "TaobaoSquare",
+//   "TwitterCircle",
+//   "TwitterSquare",
+//   "ZhihuCircle",
+//   "ZhihuSquare",
+//   "setTwoToneColor",
+//   "getTwoToneColor",
+//   "createFromIconfontCN",
+//   "default"
+// ]
+
+const datum = [...direction, ...suggestion, ...editor, ...data, ...logo];
+
+const other = all.filter(n => !datum.includes(n));
+
+export const categories = [
+  { icons: direction, title: '方向性图标' },
+  { icons: suggestion, title: '提示建议性图标' },
+  { icons: editor, title: '编辑类图标' },
+  { icons: data, title: '数据类图标' },
+  { icons: logo, title: '品牌和标识' },
+  // { icons: other, title: '网站通用图标' },
+];
+
+export default categories;

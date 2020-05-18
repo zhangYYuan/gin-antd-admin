@@ -1,33 +1,27 @@
-// import { formatterTreeNode } from '@/utils';
-import { formatterTreeNode } from '@/utils/index';
-import { queryDepart } from '../service';
-
-// deptCode: "11000000"
-// deptCodeIds: null
-// deptLeader: null
-// deptLeave: 1
-// deptName: "北京华夏名鉴科技有限公司"
+import utils  from '@/utils'
+import { queryRole } from "../service";
 
 const Model = {
-  namespace: 'sysDepart',
+  namespace: 'sysRole',
   state: {
-    departList: [],
+    roleList: [],
   },
   effects: {
     * fetch({payload}, {call, put}) {
-      const response = yield call(queryDepart, payload);
+      const response = yield call(queryRole, payload);
       if (response.resultCode === 200) {
         yield put({
-          type: 'queryDepart',
-          payload: response.resultBody,
+          type: 'queryRole',
+          payload: response.resultBody.data,
         });
       }
     },
   },
   reducers: {
-    queryDepart(state, action) {
-      const data = formatterTreeNode(action.payload, 'deptName', 'deptCode')
-      return { ...state, departList: data };
+    queryRole(state, action) {
+      const data = utils.formatterSelect(action.payload, 'roleName')
+      console.log(data)
+      return { ...state, roleList: data };
     },
   }
 }

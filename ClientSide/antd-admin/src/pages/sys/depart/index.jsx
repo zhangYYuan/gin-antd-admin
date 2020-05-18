@@ -1,33 +1,56 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { DownOutlined, PlusOutlined } from '@ant-design/icons';
-import { findDOMNode } from 'react-dom';
-import { PageHeaderWrapper } from '@ant-design/pro-layout';
 import { connect } from 'umi';
+import { Card, Col, Row, Tree, Alert } from 'antd';
+import { GridContent } from '@ant-design/pro-layout';
+import CreateDepart from './components/CreateDepart';
 
-export const BasicList = props => {
+export const Depart = props => {
+  const [current, setCurrent] = useState('已选: ')
 
   const {
-    loading,
     dispatch,
-    sysDepart: { list },
+    sysDepart: { departList },
   } = props;
-  useEffect(() => {
-    console.log('---->>>>', props)
 
+  useEffect( () => {
     dispatch({
-      type: 'sysDepart/fetch',
-      payload: {
-        count: 5,
-      },
+      type: 'sysDepart/fetch'
     });
-  }, []);
+  }, [])
+
+  const onSelect = (selectedKeys, info) => {
+    setCurrent(`已选: ${info.node.title}`)
+  };
 
   return (
-    <div>1222</div>
+    <GridContent>
+      <Row gutter={12}>
+        <Col style={{ marginBottom: 24 }} lg={7} md={24} xs={24}>
+          <Card
+            bordered={false}
+          >
+            <div style={{ marginBottom: 24 }}>
+              <Alert type="info" showIcon message={current} />
+            </div>
+            <Tree
+              onSelect={onSelect}
+              treeData={departList}
+            />
+          </Card>
+        </Col>
+        <Col lg={10} md={24} xs={24}>
+          <Card
+            bordered={false}
+          >
+            <CreateDepart />
+          </Card>
+        </Col>
+      </Row>
+    </GridContent>
   )
 }
 
 
 export default connect(({ sysDepart }) => ({
   sysDepart
-}))(BasicList);
+}))(Depart);

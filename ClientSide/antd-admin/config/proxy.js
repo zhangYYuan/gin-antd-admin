@@ -13,7 +13,8 @@ export default {
     //   pathRewrite: { '^/api': '/api' }, // /server/api/currentUser -> /api/currentUser
     // },
     '/hb/': {
-      target: 'http://dev.api.musee.com.cn/',
+      // target: 'http://dev.api.musee.com.cn',
+      target: 'http://localhost:8080',
       changeOrigin: true,
       pathRewrite: { '^/hb': '/hb' }, // /server/api/currentUser -> /api/currentUser
     },

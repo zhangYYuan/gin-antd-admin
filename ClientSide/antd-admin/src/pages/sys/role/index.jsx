@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
 import ProTable from '@ant-design/pro-table';
-import { queryRole } from '../service';
-import {Button, Divider} from "antd";
+import { Button, Divider } from "antd";
 import {PlusOutlined} from "@ant-design/icons";
-import CreateForm from "@/pages/ListTableList/components/CreateForm";
+import CreateForm from "./components/CreateForm";
+import { queryRole } from "../service";
 
 const columns = [
   {

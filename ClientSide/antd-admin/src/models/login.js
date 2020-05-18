@@ -17,18 +17,17 @@ const Model = {
       const { password } = payload
       const p = {
         ...payload,
-        password: encryption(password),
-        'grant_type':'password',
-        'scope': 'server'
+        password: '123456',
       }
       const response = yield call(fakeAccountLogin, p);
+      const data = response.data
       yield put({
         type: 'changeLoginStatus',
-        payload: response,
+        payload: data,
       }); // Login successfully
-      const token = response.access_token;
+      const token = data.token;
       localStorage.setItem('antd-pro-token', token);
-      localStorage.setItem('antd-pro-user', JSON.stringify(response));
+      localStorage.setItem('antd-pro-user', JSON.stringify(data));
       if (token) {
         const urlParams = new URL(window.location.href);
         const params = getPageQuery();
@@ -67,10 +66,7 @@ const Model = {
     changeLoginStatus(state, { payload }) {
       setAuthority(payload.currentAuthority);
       return { ...state, status: payload.data, type: payload.type };
-    },
-    saveCurrentUser(state, action) {
-      return { ...state, currentUser: action.payload || {} };
-    },
+    }
   },
 };
 export default Model;

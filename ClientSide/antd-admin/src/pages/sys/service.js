@@ -1,24 +1,10 @@
 import request from '@/utils/request';
 
-export async function addMenu(params) {
-  return request('/api/menu/addAntMenu', {
-    method: 'POST',
-    data: params
-  });
-}
-
-export async function removeRule(params) {
-  return request('/api/rule', {
-    method: 'POST',
-    data: { ...params, method: 'delete' },
-  });
-}
-export async function addRule(params) {
-  return request('sys/role/page?pageNum=2&pageSize=10', {
-    method: 'POST',
-    data: { ...params, method: 'post' },
-  });
-}
+/**
+ * 查询角色列表
+ * @param params
+ * @returns {Promise<any>}
+ */
 export async function queryRole(params) {
   return request('/sys/role/page', {
     method: 'get',
@@ -26,12 +12,32 @@ export async function queryRole(params) {
   });
 }
 
+
 /**
- * 菜单
+ * 查询菜单
  * @returns {Promise<void>}
  */
 export async function queryMenu(params) {
   return request('sys/menu/list', {
+    method: 'get',
+    params
+  });
+}
+
+export async function addMenu(data) {
+  return request('menu/add', {
+    method: 'post',
+    data
+  });
+}
+
+/**
+ * 部门管理
+ * @param params
+ * @returns {Promise<any>}
+ */
+export async function queryDepart(params) {
+  return request('sys/dept/listSysDeptList', {
     method: 'get',
     params
   });

@@ -43,10 +43,10 @@
     "not ie <= 10"
   ],
   "dependencies": {
-    "@ant-design/icons": "^4.0.0",
+    "@ant-design/icons": "^4.1.0",
     "@ant-design/pro-layout": "^5.0.9",
     "@ant-design/pro-table": "^2.2.7",
-    "antd": "^4.1.4",
+    "antd": "^4.2.0",
     "classnames": "^2.2.6",
     "crypto-js": "^4.0.0",
     "lodash": "^4.17.11",
@@ -59,7 +59,8 @@
     "react-helmet-async": "^1.0.4",
     "umi": "^3.1.1",
     "umi-request": "^1.2.19",
-    "use-merge-value": "^1.0.1"
+    "use-merge-value": "^1.0.1",
+    "xlsx": "^0.16.0"
   },
   "devDependencies": {
     "@ant-design/pro-cli": "^1.0.18",

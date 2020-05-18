@@ -1,5 +1,5 @@
 import { queryMenu } from '../service';
-import {connect} from "dva";
+import utils  from '@/utils';
 
 const Model = {
   namespace: 'sysMenu',
@@ -19,8 +19,8 @@ const Model = {
   },
   reducers: {
     queryMenu(state, action) {
-      console.log('------->fetch', action.payload)
-      return { ...state, menuList: action.payload };
+      const data = utils.formatterTreeSelect(action.payload, 'menuName', 'menuCode')
+      return { ...state, menuList: data };
     },
   }
 }

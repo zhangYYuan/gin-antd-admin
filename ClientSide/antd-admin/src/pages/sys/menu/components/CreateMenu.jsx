@@ -2,13 +2,12 @@ import React, {useEffect, useState} from 'react';
 import { Button, Space, Form, Modal, Radio, Input, InputNumber, TreeSelect } from 'antd';
 import { EditOutlined } from "@ant-design/icons";
 import IconSelect from '@/components/IconSelect';
-import { formatterTreeData} from '@/utils';
 import { connect } from 'dva';
 import { addMenu } from '../../service';
 
 const formItemLayout = {
-  labelCol: {span: 6},
-  wrapperCol: {span: 18},
+  labelCol: { span: 6 },
+  wrapperCol: { span: 18 }
 };
 
 const CreateMenu = props => {
@@ -16,7 +15,6 @@ const CreateMenu = props => {
   // 控制选择图标
   const [createModalVisible, handleModalVisible] = useState(false);
   const { modalVisible, onCancel } = props;
-  const [treeData, setTreeData] = useState([])
   const {
     dispatch,
     sysMenu: { menuList },
@@ -28,15 +26,12 @@ const CreateMenu = props => {
     });
   }, []);
 
-  useEffect(() => {
-    const tree =  formatterTreeData(menuList, 'menuName', 'menuCode')
-    setTreeData(tree)
-  }, [menuList]);
 
   const confirmAction = () => {
     form.validateFields().then(values => {
-      addMenu(values).then(res => {
-      })
+      console.log(values)
+      // addMenu(values).then(res => {
+      // })
     })
   }
 
@@ -57,7 +52,7 @@ const CreateMenu = props => {
         {...formItemLayout}
         initialValues={{
           type: 1,
-          order: 1
+          sort: 1
         }}
       >
         <Form.Item name='type' label="菜单类型">
@@ -82,7 +77,7 @@ const CreateMenu = props => {
                 <TreeSelect
                   style={{ width: '100%' }}
                   dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
-                  treeData={treeData}
+                  treeData={menuList}
                   placeholder="请选择上级菜单"
                   onChange={onChange}
                 />
@@ -92,14 +87,16 @@ const CreateMenu = props => {
         </Form.Item>
 
         <Form.Item
+          labelAlign='left'
           label="菜单名称"
-          name='menuName'
+          name='name'
           rules={[{required: true, message: '请输入菜单名!'}]}
         >
           <Input/>
         </Form.Item>
 
         <Form.Item
+          labelAlign='left'
           label="菜单路径"
           name='path'
           rules={[{required: true, message: '请输入菜单路径!'}]}
@@ -129,18 +126,21 @@ const CreateMenu = props => {
         </Form.Item>
 
         <Form.Item
-          name="order"
+          name="sort"
           label="排序"
         >
           <InputNumber min={1} max={10} />
         </Form.Item>
       </Form>
-      <IconSelect onCancel={() => handleModalVisible(false)} modalVisible={createModalVisible} />
+      <IconSelect
+
+        onCancel={() => handleModalVisible(false)}
+        modalVisible={createModalVisible}
+      />
     </Modal>
   );
 };
 
-// export default CreateMenu;
 export default connect(({ sysMenu }) => ({
   sysMenu,
 }))(CreateMenu);

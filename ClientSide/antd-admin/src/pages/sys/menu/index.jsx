@@ -6,7 +6,6 @@ import { PlusOutlined } from '@ant-design/icons';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
 import { queryMenu } from '../service';
 import CreateMenu from './components/CreateMenu';
-import CreateForm from "@/pages/ListTableList/components/CreateForm";
 
 const columns = [
   {
